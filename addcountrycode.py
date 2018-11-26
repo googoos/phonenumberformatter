@@ -1,0 +1,20 @@
+import csv
+
+with open('input.csv') as inf:
+    reader = csv.reader(inf.readlines())
+
+with open('output.csv', 'w', newline='') as outf:
+    writer = csv.writer(outf)
+    for line in reader:
+        # replace '0' with  '62' / !!! Perlu cara skip raw kosong !!!
+        if line[0][0] == '0':
+            nomor_reseller = list(line[0])
+            nomor_reseller[0] = '62'
+            nomor_reseller = ''.join(nomor_reseller)
+            writer.writerow([nomor_reseller])
+            print(nomor_reseller)
+                
+        else:
+            nomor_luar = line[0]
+            writer.writerow([nomor_luar])
+            print(nomor_luar)
